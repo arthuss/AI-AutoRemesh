@@ -1,0 +1,45 @@
+import bpy
+import subprocess
+import os
+
+def instant_remesh():
+    # Aktives Objekt holen
+    obj = bpy.context.active_object
+    if obj is None:
+        print("❌ Kein Objekt ausgewählt.")
+        return
+
+    # Temp-Exportpfad (automatisch im BlenderTemp)
+    temp_dir = bpy.app.tempdir
+    input_path = os.path.join(temp_dir, "instant_remesh_temp.ply")
+    output_path = input_path  # Instant Meshes überschreibt dieselbe Datei!
+
+    # Objekt als PLY exportieren
+    bpy.ops.wm.ply_export(filepath=input_path)
+    # Pfad zur Instant Meshes .exe
+    instant_meshes_exe = r"C:\Users\sasch\Documents\instant-meshes-windows\Instant Meshes.exe"
+
+    if not os.path.exists(instant_meshes_exe):
+        print("❌ Instant Meshes.exe nicht gefunden.")
+        return
+
+    # Instant Meshes aufrufen
+    subprocess.run([
+        instant_meshes_exe,
+        "-i", input_path,
+        "-o", output_path,
+        "-posy", "4",  # Positionsfeld (4 = Quads)
+        "-rosy", "4",  # Orientierungsfeld (4 = Quads)
+        "-f", "5000"   # Zieldreieckszahl, kannst du anpassen
+    ])
+
+    # Ursprungsobjekt unsichtbar machen
+    obj.hide_set(True)
+
+    # Remeshtes Objekt importieren
+    bpy.ops.wm.ply_import(filepath=output_path)
+
+    print("✅ Remesh abgeschlossen und neues Objekt importiert.")
+
+# Direkt ausführen
+instant_remesh()
