@@ -212,3 +212,13 @@ void batch_process(const std::string &input, const std::string &output,
     if (bvh)
         delete bvh;
 }
+static bool g_batchSolveOrientation = false;
+static bool g_batchSolvePosition = false;
+
+void setBatchSolveOrientation(bool value) {
+    g_batchSolveOrientation = value;
+}
+
+void setBatchSolvePosition(bool value) {
+    g_batchSolvePosition = value;
+}

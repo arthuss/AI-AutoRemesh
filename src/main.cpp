@@ -22,7 +22,7 @@ NANOGUI_FORCE_DISCRETE_GPU();
 
 int nprocs = -1;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     std::vector<std::string> args;
     bool extrinsic = true, dominant = false, align_to_boundaries = false;
     bool fullscreen = false, help = false, deterministic = false, compat = false;
@@ -30,53 +30,65 @@ int main(int argc, char **argv) {
     uint32_t knn_points = 10, smooth_iter = 2;
     Float crease_angle = -1, scale = -1;
     std::string batchOutput;
-    #if defined(__APPLE__)
-        bool launched_from_finder = false;
-    #endif
+#if defined(__APPLE__)
+    bool launched_from_finder = false;
+#endif
 
     try {
-        for (int i=1; i<argc; ++i) {
+        setBatchSolveOrientation(true);
+        setBatchSolvePosition(true);
+        for (int i = 1; i < argc; ++i) {
             if (strcmp("--fullscreen", argv[i]) == 0 || strcmp("-F", argv[i]) == 0) {
                 fullscreen = true;
-            } else if (strcmp("--help", argv[i]) == 0 || strcmp("-h", argv[i]) == 0) {
+            }
+            else if (strcmp("--help", argv[i]) == 0 || strcmp("-h", argv[i]) == 0) {
                 help = true;
-            } else if (strcmp("--deterministic", argv[i]) == 0 || strcmp("-d", argv[i]) == 0) {
+            }
+            else if (strcmp("--deterministic", argv[i]) == 0 || strcmp("-d", argv[i]) == 0) {
                 deterministic = true;
-            } else if (strcmp("--intrinsic", argv[i]) == 0 || strcmp("-i", argv[i]) == 0) {
+            }
+            else if (strcmp("--intrinsic", argv[i]) == 0 || strcmp("-i", argv[i]) == 0) {
                 extrinsic = false;
-            } else if (strcmp("--boundaries", argv[i]) == 0 || strcmp("-b", argv[i]) == 0) {
+            }
+            else if (strcmp("--boundaries", argv[i]) == 0 || strcmp("-b", argv[i]) == 0) {
                 align_to_boundaries = true;
-            } else if (strcmp("--threads", argv[i]) == 0 || strcmp("-t", argv[i]) == 0) {
+            }
+            else if (strcmp("--threads", argv[i]) == 0 || strcmp("-t", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing thread count!" << endl;
                     return -1;
                 }
                 nprocs = str_to_uint32_t(argv[i]);
-            } else if (strcmp("--smooth", argv[i]) == 0 || strcmp("-S", argv[i]) == 0) {
+            }
+            else if (strcmp("--smooth", argv[i]) == 0 || strcmp("-S", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing smoothing iteration count argument!" << endl;
                     return -1;
                 }
                 smooth_iter = str_to_uint32_t(argv[i]);
-            } else if (strcmp("--knn", argv[i]) == 0 || strcmp("-k", argv[i]) == 0) {
+            }
+            else if (strcmp("--knn", argv[i]) == 0 || strcmp("-k", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing knn point count argument!" << endl;
                     return -1;
                 }
                 knn_points = str_to_uint32_t(argv[i]);
-            } else if (strcmp("--crease", argv[i]) == 0 || strcmp("-c", argv[i]) == 0) {
+            }
+            else if (strcmp("--crease", argv[i]) == 0 || strcmp("-c", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing crease angle argument!" << endl;
                     return -1;
                 }
                 crease_angle = str_to_float(argv[i]);
-            } else if (strcmp("--rosy", argv[i]) == 0 || strcmp("-r", argv[i]) == 0) {
+            }
+            else if (strcmp("--rosy", argv[i]) == 0 || strcmp("-r", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing rotation symmetry type!" << endl;
                     return -1;
                 }
                 rosy = str_to_int32_t(argv[i]);
-            } else if (strcmp("--posy", argv[i]) == 0 || strcmp("-p", argv[i]) == 0) {
+            }
+            else if (strcmp("--posy", argv[i]) == 0 || strcmp("-p", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing position symmetry type!" << endl;
                     return -1;
@@ -84,39 +96,47 @@ int main(int argc, char **argv) {
                 posy = str_to_int32_t(argv[i]);
                 if (posy == 6)
                     posy = 3;
-            } else if (strcmp("--scale", argv[i]) == 0 || strcmp("-s", argv[i]) == 0) {
+            }
+            else if (strcmp("--scale", argv[i]) == 0 || strcmp("-s", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing scale argument!" << endl;
                     return -1;
                 }
                 scale = str_to_float(argv[i]);
-            } else if (strcmp("--faces", argv[i]) == 0 || strcmp("-f", argv[i]) == 0) {
+            }
+            else if (strcmp("--faces", argv[i]) == 0 || strcmp("-f", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing face count argument!" << endl;
                     return -1;
                 }
                 face_count = str_to_int32_t(argv[i]);
-            } else if (strcmp("--vertices", argv[i]) == 0 || strcmp("-v", argv[i]) == 0) {
+            }
+            else if (strcmp("--vertices", argv[i]) == 0 || strcmp("-v", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing vertex count argument!" << endl;
                     return -1;
                 }
                 vertex_count = str_to_int32_t(argv[i]);
-            } else if (strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) {
+            }
+            else if (strcmp("--output", argv[i]) == 0 || strcmp("-o", argv[i]) == 0) {
                 if (++i >= argc) {
                     cerr << "Missing batch mode output file argument!" << endl;
                     return -1;
                 }
                 batchOutput = argv[i];
-            } else if (strcmp("--dominant", argv[i]) == 0 || strcmp("-D", argv[i]) == 0) {
+            }
+            else if (strcmp("--dominant", argv[i]) == 0 || strcmp("-D", argv[i]) == 0) {
                 dominant = true;
-            } else if (strcmp("--compat", argv[i]) == 0 || strcmp("-C", argv[i]) == 0) {
+            }
+            else if (strcmp("--compat", argv[i]) == 0 || strcmp("-C", argv[i]) == 0) {
                 compat = true;
 #if defined(__APPLE__)
-            } else if (strncmp("-psn", argv[i], 4) == 0) {
+            }
+            else if (strncmp("-psn", argv[i], 4) == 0) {
                 launched_from_finder = true;
 #endif
-            } else {
+            }
+            else {
                 if (strncmp(argv[i], "-", 1) == 0) {
                     cerr << "Invalid argument: \"" << argv[i] << "\"!" << endl;
                     help = true;
@@ -124,14 +144,15 @@ int main(int argc, char **argv) {
                 args.push_back(argv[i]);
             }
         }
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception& e) {
         cout << "Error: " << e.what() << endl;
         help = true;
     }
 
     if ((posy != 3 && posy != 4) || (rosy != 2 && rosy != 4 && rosy != 6)) {
         cerr << "Error: Invalid symmetry type!" << endl;
-        help  = true;
+        help = true;
     }
 
     int nConstraints = 0;
@@ -175,11 +196,12 @@ int main(int argc, char **argv) {
     if (!batchOutput.empty() && args.size() == 1) {
         try {
             batch_process(args[0], batchOutput, rosy, posy, scale, face_count,
-                          vertex_count, crease_angle, extrinsic,
-                          align_to_boundaries, smooth_iter, knn_points,
-                          !dominant, deterministic);
+                vertex_count, crease_angle, extrinsic,
+                align_to_boundaries, smooth_iter, knn_points,
+                !dominant, deterministic);
             return 0;
-        } catch (const std::exception &e) {
+        }
+        catch (const std::exception& e) {
             cerr << "Caught runtime error : " << e.what() << endl;
             return -1;
         }
@@ -188,10 +210,10 @@ int main(int argc, char **argv) {
     try {
         nanogui::init();
 
-        #if defined(__APPLE__)
-            if (launched_from_finder)
-                nanogui::chdir_to_bundle_parent();
-        #endif
+#if defined(__APPLE__)
+        if (launched_from_finder)
+            nanogui::chdir_to_bundle_parent();
+#endif
 
         {
             nanogui::ref<Viewer> viewer = new Viewer(fullscreen, deterministic);
@@ -200,10 +222,11 @@ int main(int argc, char **argv) {
             if (args.size() == 1) {
                 if (Serializer::isSerializedFile(args[0])) {
                     viewer->loadState(args[0], compat);
-                } else {
+                }
+                else {
                     viewer->loadInput(args[0], crease_angle,
-                            scale, face_count, vertex_count,
-                            rosy, posy, knn_points);
+                        scale, face_count, vertex_count,
+                        rosy, posy, knn_points);
                     viewer->setExtrinsic(extrinsic);
                 }
             }
@@ -212,13 +235,14 @@ int main(int argc, char **argv) {
         }
 
         nanogui::shutdown();
-    } catch (const std::runtime_error &e) {
+    }
+    catch (const std::runtime_error& e) {
         std::string error_msg = std::string("Caught a fatal error: ") + std::string(e.what());
-        #if defined(_WIN32)
-            MessageBoxA(nullptr, error_msg.c_str(), NULL, MB_ICONERROR | MB_OK);
-        #else
-            std::cerr << error_msg << endl;
-        #endif
+#if defined(_WIN32)
+        MessageBoxA(nullptr, error_msg.c_str(), NULL, MB_ICONERROR | MB_OK);
+#else
+        std::cerr << error_msg << endl;
+#endif
         return -1;
     }
 

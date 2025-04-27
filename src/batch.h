@@ -20,3 +20,5 @@ extern void batch_process(const std::string &input, const std::string &output,
                           int vertex_count, Float creaseAngle, bool extrinsic,
                           bool align_to_boundaries, int smooth_iter,
                           int knn_points, bool dominant, bool deterministic);
+extern void setBatchSolveOrientation(bool value);
+extern void setBatchSolvePosition(bool value);
