@@ -1,72 +1,67 @@
-# Instant Meshes
-[![Build Status](https://travis-ci.org/wjakob/instant-meshes.svg?branch=master)](https://travis-ci.org/wjakob/instant-meshes)
-[![Build status](https://ci.appveyor.com/api/projects/status/dm4kqxhin5uxiey0/branch/master?svg=true)](https://ci.appveyor.com/project/wjakob/instant-meshes/branch/master)
+📄 Beschreibung für das Blender Addon (AI AutoRemesh)
+AI AutoRemesh – Instant Meshes Integration for Blender
+AI AutoRemesh ist ein leistungsstarkes Blender-Addon, das die Open-Source-Technologie von Instant Meshes direkt in Blender integriert.
+Es ermöglicht es dir, in Sekunden hochwertige Field Aligned Remeshes zu erstellen – perfekt für Retopology, Game Assets oder optimiertes Sculpting.
 
-<img width="170" height="166" src="https://github.com/wjakob/instant-meshes/raw/master/resources/icon.png">
+Hauptfunktionen
+Direkter Remesh-Workflow in Blender (kein externer Export nötig)
 
-This repository contains the interactive meshing software developed as part of the publication
+Schnelles Field Aligned Remeshing basierend auf Feature-Detection
 
-> **Instant Field-Aligned Meshes**<br/>
-> Wenzel Jakob, Marco Tarini, Daniele Panozzo, Olga Sorkine-Hornung<br/>
-> In *ACM Transactions on Graphics (Proceedings of SIGGRAPH Asia 2015)*<br/>
-> [PDF](http://igl.ethz.ch/projects/instant-meshes/instant-meshes-SA-2015-jakob-et-al.pdf),
-> [Video](https://www.youtube.com/watch?v=U6wtw6W4x3I),
-> [Project page](http://igl.ethz.ch/projects/instant-meshes/)
+Vorschau-Modus (geplante Erweiterung)
 
+Automatischer Download und Verwaltung der Instant Meshes Engine
 
-##### In commercial software
+Benutzerfreundliches UI-Panel im Blender Sidebar-Menü (N-Panel)
+ 
+Batch-Remesh für mehrere Objekte (geplant)
 
-Since version 10.2, Modo uses the Instant Meshes algorithm to implement its
-automatic retopology feature. An interview discussing this technique and more
-recent projects is available [here](https://www.foundry.com/trends/design-visualisation/mitsuba-renderer-instant-meshes).
+Was ist Field Aligned Remesh?
+Field Aligned Remeshing erzeugt ein neues Mesh, dessen Topologie an natürlichen Formen und Krümmungen des Modells ausgerichtet ist.
+Anstatt einfach zufällige Dreiecke zu erzeugen (wie bei klassischem Dyntopo oder Voxel Remesh), entstehen:
 
-## Screenshot
+Kanten entlang wichtiger Features (wie Kanten, Kurven und Richtungsänderungen)
 
-![Instant Meshes logo](https://github.com/wjakob/instant-meshes/raw/master/resources/screenshot.jpg)
+Sauber strukturierte Quads oder Tris
 
-## Pre-compiled binaries
+Optimierte UV-Unwrapping- und Animationsergebnisse
 
-The following binaries (Intel, 64 bit) are automatically generated from the latest GitHub revision.
+Dies ist besonders nützlich für:
 
-> [Microsoft Windows](https://instant-meshes.s3.eu-central-1.amazonaws.com/Release/instant-meshes-windows.zip)<br/>
-> [Mac OS X](https://instant-meshes.s3.eu-central-1.amazonaws.com/instant-meshes-macos.zip)<br/>
-> [Linux](https://instant-meshes.s3.eu-central-1.amazonaws.com/instant-meshes-linux.zip)
+Charaktermodellierung
 
-Please also fetch the following dataset ZIP file and extract it so that the
-``datasets`` folder is in the same directory as ``Instant Meshes``, ``Instant Meshes.app``,
-or ``Instant Meshes.exe``.
+Game Assets
 
-> [Datasets](https://instant-meshes.s3.eu-central-1.amazonaws.com/instant-meshes-datasets.zip)
+Technische Modelle
 
-Note: On Linux, Instant Meshes relies on the program ``zenity``, which must be installed.
+Vorbereitung für Sculpting oder Baking
 
-## Compiling
+Installation
+Lade die Datei ai_auto_remesh_v1.0.zip herunter.
 
-Compiling from scratch requires CMake and a recent version of XCode on Mac,
-Visual Studio 2015 on Windows, and GCC on Linux. 
+Öffne Blender → Edit > Preferences > Add-ons > Install...
 
-On MacOS, compiling should be as simple as
+Wähle die ZIP-Datei aus und installiere sie.
 
-    git clone --recursive https://github.com/wjakob/instant-meshes
-    cd instant-meshes
-    cmake .
-    make -j 4
+Aktiviere das Addon unter AI AutoRemesh im Addon-Menü.
 
-To build on Linux, please install the prerequisites ``libxrandr-dev``,
-``libxinerama-dev``, ``libxcursor-dev``, and ``libxi-dev`` and then use the
-same sequence of commands shown above for MacOS.
+Systemanforderungen
+Blender 3.6+ (getestet mit Blender 4.0+)
 
-On Windows, open the generated file ``InstantMeshes.sln`` after step 3 and proceed building as usual from within Visual Studio.
+Windows 10/11 (Instant Meshes Engine wird automatisch heruntergeladen)
 
-## Usage
+Internetverbindung beim ersten Start erforderlich (ca. 6 MB)
 
-To get started, launch the binary and select a dataset using the "Open mesh" button on the top left (the application must be located in the same directory as the 'datasets' folder, otherwise the panel will be empty).
+Lizenz
+Dieses Addon basiert auf der Open-Source-Software Instant Meshes von wjakob (MIT License)
+Alle Erweiterungen, Integrationen und das Blender Addon stehen ebenfalls unter der MIT Lizenz.
 
-The standard workflow is to solve for an orientation field (first blue button) and a position field (second blue button) in sequence, after which the 'Export mesh' button becomes active. Many user interface elements display a descriptive message when hovering the mouse cursor above for a second.
+🚀 Download jetzt und remeshe smarter, nicht härter!
+📌 Kurzversion für ein kurzes GitHub-Release-Feld:
+AI AutoRemesh v1.0
 
-A range of additional information about the input mesh, the computed fields,
-and the output mesh can be visualized using the check boxes accessible via the
-'Advanced' panel.
+Direktes Field Aligned Remeshing in Blender
 
-Clicking the left mouse button and dragging rotates the object; right-dragging
-(or shift+left-dragging) translates, and the mouse wheel zooms. The fields can also be manipulated using brush tools that are accessible by clicking the first icon in each 'Tool' row.
+Integrierte Instant Meshes Engine
+
+Schneller, präziser, topologie-orientierter Remesh für Game Assets und Charaktere.
