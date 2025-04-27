@@ -1,67 +1,59 @@
-📄 Beschreibung für das Blender Addon (AI AutoRemesh)
-AI AutoRemesh – Instant Meshes Integration for Blender
-AI AutoRemesh ist ein leistungsstarkes Blender-Addon, das die Open-Source-Technologie von Instant Meshes direkt in Blender integriert.
-Es ermöglicht es dir, in Sekunden hochwertige Field Aligned Remeshes zu erstellen – perfekt für Retopology, Game Assets oder optimiertes Sculpting.
+ AI AutoRemesh – Instant Meshes Integration for Blender
+Overview
+AI AutoRemesh is a powerful Blender addon that directly integrates the open-source technology of Instant Meshes into Blender.
+It enables you to generate high-quality Field Aligned Remeshes within seconds — perfect for retopology, game assets, and optimized sculpting workflows.
 
-Hauptfunktionen
-Direkter Remesh-Workflow in Blender (kein externer Export nötig)
+Main Features
+Direct remesh workflow inside Blender (no external exports needed)
 
-Schnelles Field Aligned Remeshing basierend auf Feature-Detection
+Fast field-aligned remeshing based on feature detection
 
-Vorschau-Modus (geplante Erweiterung)
+Preview mode (planned for future versions)
 
-Automatischer Download und Verwaltung der Instant Meshes Engine
+Automatic download and management of the Instant Meshes Engine
 
-Benutzerfreundliches UI-Panel im Blender Sidebar-Menü (N-Panel)
- 
-Batch-Remesh für mehrere Objekte (geplant)
+User-friendly UI Panel in the Blender sidebar (N-Panel)
 
-Was ist Field Aligned Remesh?
-Field Aligned Remeshing erzeugt ein neues Mesh, dessen Topologie an natürlichen Formen und Krümmungen des Modells ausgerichtet ist.
-Anstatt einfach zufällige Dreiecke zu erzeugen (wie bei klassischem Dyntopo oder Voxel Remesh), entstehen:
+Batch remesh for multiple objects (planned)
 
-Kanten entlang wichtiger Features (wie Kanten, Kurven und Richtungsänderungen)
+What is Field Aligned Remeshing?
+Field-aligned remeshing creates a new mesh topology that follows the natural shapes and curvatures of the model.
+Instead of generating random triangles (like Dyntopo or Voxel Remesh), it produces:
 
-Sauber strukturierte Quads oder Tris
+Edges aligned along important features (creases, curves, sharp angles)
 
-Optimierte UV-Unwrapping- und Animationsergebnisse
+Cleanly structured quads or tris
 
-Dies ist besonders nützlich für:
+Optimized UV unwrapping and better animation results
 
-Charaktermodellierung
+This method is especially useful for:
 
-Game Assets
+Character modeling
 
-Technische Modelle
+Game asset creation
 
-Vorbereitung für Sculpting oder Baking
+Technical models
+
+Sculpting or baking preparation
 
 Installation
-Lade die Datei ai_auto_remesh_v1.0.zip herunter.
+Download the file ai_auto_remesh_v1.0.zip.
 
-Öffne Blender → Edit > Preferences > Add-ons > Install...
+Open Blender → Edit > Preferences > Add-ons > Install...
 
-Wähle die ZIP-Datei aus und installiere sie.
+Select the ZIP file and install it.
 
-Aktiviere das Addon unter AI AutoRemesh im Addon-Menü.
+Enable the addon under AI AutoRemesh in the addon list.
 
-Systemanforderungen
-Blender 3.6+ (getestet mit Blender 4.0+)
+Requirements
+Blender 3.6+ (tested with Blender 4.0+)
 
-Windows 10/11 (Instant Meshes Engine wird automatisch heruntergeladen)
+Windows 10/11 (the Instant Meshes Engine will be automatically downloaded)
 
-Internetverbindung beim ersten Start erforderlich (ca. 6 MB)
+Internet connection required at first start (~6 MB)
 
-Lizenz
-Dieses Addon basiert auf der Open-Source-Software Instant Meshes von wjakob (MIT License)
-Alle Erweiterungen, Integrationen und das Blender Addon stehen ebenfalls unter der MIT Lizenz.
+License
+This addon is based on the open-source project Instant Meshes by wjakob (MIT License).
+All enhancements, integrations, and this Blender addon are also licensed under the MIT License.
 
-🚀 Download jetzt und remeshe smarter, nicht härter!
-📌 Kurzversion für ein kurzes GitHub-Release-Feld:
-AI AutoRemesh v1.0
-
-Direktes Field Aligned Remeshing in Blender
-
-Integrierte Instant Meshes Engine
-
-Schneller, präziser, topologie-orientierter Remesh für Game Assets und Charaktere.
+🚀 Download now and remesh smarter, not harder!
